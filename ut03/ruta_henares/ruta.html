@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruta en bici de Torrejón a Alcalá por el Henares · Javier Aparicio</title>
+  <meta name="description" content="Ruta en bici de 12 km desde Torrejón de Ardoz hasta Alcalá de Henares siguiendo el río Henares: mapa, tramos, vídeo y consejos.">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido principal</a>
+
+  <header>
+    <p class="marca">Mis rutas en bici</p>
+    <nav aria-label="Menú principal">
+      <ul>
+        <li><a href="ruta.html" aria-current="page">Ruta del Henares</a></li>
+        <li><a href="../alquiler/alquiler.html">Alquiler BiciRuta</a></li>
+        <li><a href="https://github.com/JavierAparicio7/lm-portafolio">Mi portafolio en GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="contenedor">
+    <main id="contenido" tabindex="-1">
+      <h1>Ruta en bici de Torrejón a Alcalá por el Henares</h1>
+      <p>Una ruta fácil de unos 12 km por sentido que sale de Torrejón de Ardoz, baja hasta el río Henares y lo sigue por caminos de tierra hasta llegar a Alcalá de Henares. Casi todo es llano, así que se puede hacer con cualquier bici.</p>
+
+      <section aria-labelledby="titulo-mapa">
+        <h2 id="titulo-mapa">Cómo es el recorrido</h2>
+        <figure>
+          <img src="img/mapa_ruta-800.jpg"
+               srcset="img/mapa_ruta-400.jpg 400w, img/mapa_ruta-800.jpg 800w, img/mapa_ruta-1200.jpg 1200w"
+               sizes="(min-width: 900px) 660px, calc(100vw - 32px)"
+               width="1200" height="800"
+               alt="Mapa esquemático de la ruta, que sale de Torrejón de Ardoz, baja hasta el río Henares y lo acompaña por la orilla norte hasta Alcalá de Henares">
+          <figcaption>Mapa de la ruta, el trazo naranja va paralelo al río Henares.</figcaption>
+        </figure>
+      </section>
+
+      <section aria-labelledby="titulo-tramos">
+        <h2 id="titulo-tramos">Tramos de la ruta</h2>
+        <table>
+          <caption>Distancia, tiempo y tipo de camino de cada tramo, solo ida</caption>
+          <thead>
+            <tr>
+              <th scope="col">Tramo</th>
+              <th scope="col">Distancia</th>
+              <th scope="col">Tiempo aproximado</th>
+              <th scope="col">Tipo de camino</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Torrejón centro hasta el río Henares</th>
+              <td>3 km</td>
+              <td>12 min</td>
+              <td>Asfalto y carril bici</td>
+            </tr>
+            <tr>
+              <th scope="row">Camino junto al río</th>
+              <td>7 km</td>
+              <td>28 min</td>
+              <td>Tierra compacta</td>
+            </tr>
+            <tr>
+              <th scope="row">Entrada a Alcalá hasta la plaza de Cervantes</th>
+              <td>2 km</td>
+              <td>10 min</td>
+              <td>Asfalto</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">Total</th>
+              <td>12 km</td>
+              <td>50 min</td>
+              <td>Dificultad baja</td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+
+      <section aria-labelledby="titulo-video">
+        <h2 id="titulo-video">Vídeo del recorrido</h2>
+        <figure>
+          <video controls preload="metadata" width="640" height="360" poster="img/ruta_poster.jpg">
+            <source src="media/ruta_henares.mp4" type="video/mp4">
+            <track kind="captions" src="media/ruta_henares.es.vtt" srclang="es" label="Español" default>
+            <p>Tu navegador no puede reproducir el vídeo. Puedes <a href="media/ruta_henares.mp4">descargar el vídeo del recorrido</a>.</p>
+          </video>
+          <figcaption>Animación de 10 segundos del recorrido con subtítulos en español.</figcaption>
+        </figure>
+      </section>
+
+      <article aria-labelledby="titulo-experiencia">
+        <h2 id="titulo-experiencia">Por qué me gusta esta ruta</h2>
+        <p>Es la ruta que más hago porque sale de mi ciudad y en menos de una hora estoy en Alcalá sin pasar casi por carretera. El tramo del río es el mejor, va por la sombra de los árboles y no hay coches, al llegar a Alcalá se puede dar una vuelta por el centro y volver por el mismo camino.</p>
+        <p>Lo único a tener en cuenta es que después de llover el camino de tierra se pone con barro, así que en esos días es mejor esperar uno o dos días.</p>
+      </article>
+    </main>
+
+    <aside aria-labelledby="titulo-consejos">
+      <h2 id="titulo-consejos">Consejos y avisos</h2>
+      <ul>
+        <li>Lleva agua, en el tramo del río no hay fuentes.</li>
+        <li>Casco y luces si vuelves al atardecer.</li>
+      </ul>
+      <form action="ruta.html" method="get">
+        <label for="correo">Tu correo para avisarte de la próxima salida</label>
+        <input type="email" id="correo" name="correo" placeholder="nombre@ejemplo.com" autocomplete="email" required>
+        <button type="submit">Avísame</button>
+      </form>
+    </aside>
+  </div>
+
+  <footer>
+    <p>Javier Aparicio González · ASIR 1 · Lenguajes de marcas · Actualizado el <time datetime="2026-11-13">13 de noviembre de 2026</time></p>
+  </footer>
+</body>
+</html>
