@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inscripción al torneo de e-sports del centro</title>
+  <link rel="stylesheet" href="css/torneo.css">
+  <script src="js/torneo.js" defer></script>
+</head>
+<body>
+
+  <header class="cabecera">
+    <p class="marca">Torneo de e-sports · ASIR</p>
+  </header>
+
+  <main class="contenido">
+    <h1>Inscripción al torneo de e-sports</h1>
+    <p>Rellena tus datos para apuntarte al torneo del centro. Los campos con * son obligatorios.</p>
+
+    <!--
+      Método POST:
+      - Se mandan datos personales, fecha de nacimiento, correo y teléfono, que no deben quedar
+        en la URL, en el historial ni en los registros del servidor.
+      - El envío crea una inscripción nueva, si se recarga la página el navegador avisa antes de
+        volver a mandarla y así no se apunta dos veces.
+      - Con GET la URL tiene un límite de tamaño y no se pueden mandar ficheros, aquí no hace falta
+        un fichero pero el formulario puede crecer.
+      Recuerda que POST no cifra, la página tiene que ir por HTTPS y el servidor tiene que volver a validar.
+    -->
+    <form id="form-torneo" action="https://httpbin.org/post" method="post">
+
+      <fieldset>
+        <legend>Datos del jugador</legend>
+
+        <div class="campo">
+          <label for="nombre">Nombre y apellidos *</label>
+          <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="80" autocomplete="name">
+        </div>
+
+        <div class="campo">
+          <label for="gamertag">Nombre de jugador *</label>
+          <input type="text" id="gamertag" name="gamertag" required pattern="[A-Za-z0-9_]{3,16}"
+                 title="De 3 a 16 caracteres, solo letras sin tilde, números y guion bajo"
+                 aria-describedby="ayuda-gamertag">
+          <small id="ayuda-gamertag" class="ayuda">De 3 a 16 caracteres, letras sin tilde, números y _</small>
+        </div>
+
+        <div class="campo">
+          <label for="nia">NIA *</label>
+          <input type="text" id="nia" name="nia" required pattern="[0-9]{8}" inputmode="numeric"
+                 title="El NIA tiene 8 cifras" aria-describedby="ayuda-nia" maxlength="8">
+          <small id="ayuda-nia" class="ayuda">Número de identificación del alumno, 8 cifras</small>
+        </div>
+
+        <div class="campo">
+          <label for="nacimiento">Fecha de nacimiento *</label>
+          <input type="date" id="nacimiento" name="nacimiento" required min="1950-01-01"
+                 aria-describedby="ayuda-nacimiento">
+          <small id="ayuda-nacimiento" class="ayuda">Hay que tener 16 años o más</small>
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo electrónico *</label>
+          <input type="email" id="correo" name="correo" required autocomplete="email" placeholder="jugador@ejemplo.com">
+        </div>
+
+        <div class="campo">
+          <label for="telefono">Teléfono móvil</label>
+          <input type="tel" id="telefono" name="telefono" pattern="[67][0-9]{8}"
+                 title="9 cifras empezando por 6 o 7" aria-describedby="ayuda-telefono" maxlength="9">
+          <small id="ayuda-telefono" class="ayuda">Opcional, 9 cifras empezando por 6 o 7</small>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Torneo</legend>
+
+        <div class="campo">
+          <label for="juego">Juego *</label>
+          <select id="juego" name="juego" required>
+            <option value="">-- Elige un juego --</option>
+            <option value="rocket-league">Rocket League</option>
+            <option value="ea-fc">EA Sports FC</option>
+            <option value="mario-kart">Mario Kart 8 Deluxe</option>
+            <option value="smash">Super Smash Bros. Ultimate</option>
+            <option value="valorant">Valorant</option>
+          </select>
+        </div>
+
+        <fieldset class="grupo">
+          <legend>Modalidad *</legend>
+          <div class="opcion">
+            <input type="radio" id="mod-individual" name="modalidad" value="individual" required>
+            <label for="mod-individual">Individual</label>
+          </div>
+          <div class="opcion">
+            <input type="radio" id="mod-equipo" name="modalidad" value="equipo">
+            <label for="mod-equipo">Por equipos</label>
+          </div>
+        </fieldset>
+
+        <div class="campo">
+          <label for="equipo">Nombre del equipo</label>
+          <input type="text" id="equipo" name="equipo" maxlength="30" aria-describedby="ayuda-equipo">
+          <small id="ayuda-equipo" class="ayuda">Obligatorio si juegas por equipos</small>
+        </div>
+
+        <div class="campo">
+          <label for="jugadores">Jugadores en el equipo</label>
+          <input type="number" id="jugadores" name="jugadores" min="1" max="5" step="1" value="1">
+        </div>
+
+        <div class="campo">
+          <label for="nivel">Tu nivel, de 1 a 10</label>
+          <input type="range" id="nivel" name="nivel" min="1" max="10" step="1" value="5" aria-describedby="valor-nivel">
+          <output id="valor-nivel" for="nivel">5</output>
+        </div>
+
+        <fieldset class="grupo">
+          <legend>Plataformas que tienes</legend>
+          <div class="opcion">
+            <input type="checkbox" id="pc" name="plataformas" value="pc">
+            <label for="pc">PC</label>
+          </div>
+          <div class="opcion">
+            <input type="checkbox" id="switch" name="plataformas" value="switch">
+            <label for="switch">Nintendo Switch</label>
+          </div>
+          <div class="opcion">
+            <input type="checkbox" id="ps" name="plataformas" value="playstation">
+            <label for="ps">PlayStation</label>
+          </div>
+        </fieldset>
+
+        <div class="campo">
+          <label for="comentarios">Comentarios</label>
+          <textarea id="comentarios" name="comentarios" rows="4" maxlength="300"></textarea>
+        </div>
+      </fieldset>
+
+      <div class="opcion">
+        <input type="checkbox" id="normas" name="normas" value="acepto" required>
+        <label for="normas">Acepto las normas del torneo *</label>
+      </div>
+
+      <button type="submit">Inscribirme</button>
+    </form>
+  </main>
+
+</body>
+</html>

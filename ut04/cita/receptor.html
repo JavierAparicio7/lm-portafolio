@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receptor de pruebas (GET)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; }
+    table { border-collapse: collapse; } th, td { border: 1px solid #999; padding: 4px 10px; text-align: left; }
+    code { background: #eee; padding: 2px 4px; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <h1>Receptor de pruebas</h1>
+  <p>Esta página simula el servidor: muestra los datos que le llegan en la <strong>URL</strong> (método GET).</p>
+  <p>URL recibida: <code id="url"></code></p>
+  <table>
+    <thead><tr><th scope="col">Nombre del campo (name)</th><th scope="col">Valor recibido</th></tr></thead>
+    <tbody id="datos"></tbody>
+  </table>
+  <p id="vacio" hidden>No ha llegado ningún dato por la URL. Si el formulario usa POST, los datos van en el cuerpo de la petición: míralos en DevTools › Red › (petición) › Carga útil (Payload).</p>
+  <script>
+    document.getElementById('url').textContent = location.href;
+    const parametros = new URLSearchParams(location.search);
+    const cuerpo = document.getElementById('datos');
+    for (const [nombre, valor] of parametros) {
+      const fila = document.createElement('tr');
+      const c1 = document.createElement('td'); c1.textContent = nombre;
+      const c2 = document.createElement('td'); c2.textContent = valor === '' ? '(vacío)' : valor;
+      fila.append(c1, c2); cuerpo.append(fila);
+    }
+    document.getElementById('vacio').hidden = [...parametros].length > 0;
+  </script>
+</body>
+</html>

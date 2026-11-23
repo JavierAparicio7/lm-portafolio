@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pide cita en el taller · BiciRuta</title>
+  <link rel="stylesheet" href="css/cita.css">
+  <script src="js/cita.js" defer></script>
+</head>
+<body>
+
+  <header class="cabecera">
+    <a href="index.html" class="logo"><img src="img/logo_biciruta.png" alt="BiciRuta, inicio" width="160" height="40"></a>
+
+    <!-- Buscador: GET, porque solo consulta datos y la URL se puede guardar o compartir -->
+    <form class="buscador" action="receptor.html" method="get" role="search">
+      <label for="q">Buscar en la tienda</label>
+      <input type="search" id="q" name="q" placeholder="Casco, cubierta, luces..." required>
+      <button type="submit">Buscar</button>
+    </form>
+  </header>
+
+  <main class="contenido">
+    <h1>Pide cita en el taller</h1>
+    <p>Rellena el formulario y te confirmamos la cita por correo. Los campos marcados con * son obligatorios.</p>
+
+    <!-- Cita: POST, porque lleva datos personales, una contraseña y un fichero, y crea una cita nueva -->
+    <form id="form-cita" action="https://httpbin.org/post" method="post" enctype="multipart/form-data">
+
+      <fieldset>
+        <legend>Tus datos</legend>
+
+        <div class="campo">
+          <label for="nombre">Nombre y apellidos *</label>
+          <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="80" autocomplete="name">
+        </div>
+
+        <div class="campo">
+          <label for="dni">DNI *</label>
+          <input type="text" id="dni" name="dni" required pattern="[0-9]{8}[A-Za-z]"
+                 title="8 cifras y una letra, por ejemplo 12345678Z" aria-describedby="ayuda-dni" maxlength="9">
+          <small id="ayuda-dni" class="ayuda">8 cifras y una letra, sin espacios ni guiones</small>
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo electrónico *</label>
+          <input type="email" id="correo" name="correo" required autocomplete="email" placeholder="nombre@ejemplo.com">
+        </div>
+
+        <div class="campo">
+          <label for="telefono">Teléfono móvil *</label>
+          <input type="tel" id="telefono" name="telefono" required pattern="[67][0-9]{8}"
+                 title="9 cifras empezando por 6 o 7" aria-describedby="ayuda-telefono" autocomplete="tel" maxlength="9">
+          <small id="ayuda-telefono" class="ayuda">9 cifras empezando por 6 o 7, sin prefijo</small>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tu bicicleta y la cita</legend>
+
+        <div class="campo">
+          <label for="fecha">Fecha de la cita *</label>
+          <input type="date" id="fecha" name="fecha" required aria-describedby="ayuda-fecha">
+          <small id="ayuda-fecha" class="ayuda">A partir de mañana, el taller cierra los domingos</small>
+        </div>
+
+        <div class="campo">
+          <label for="tipo">Tipo de bicicleta *</label>
+          <select id="tipo" name="tipo" required>
+            <option value="">-- Elige una opción --</option>
+            <option value="urbana">Urbana</option>
+            <option value="montana">Montaña</option>
+            <option value="electrica">Eléctrica</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="km">Km desde la última revisión</label>
+          <input type="number" id="km" name="km" min="0" max="50000" step="100" aria-describedby="ayuda-km">
+          <small id="ayuda-km" class="ayuda">De 0 a 50 000, en saltos de 100</small>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Servicio *</legend>
+        <div class="opcion">
+          <input type="radio" id="serv-basica" name="servicio" value="revision-basica" required>
+          <label for="serv-basica">Revisión básica</label>
+        </div>
+        <div class="opcion">
+          <input type="radio" id="serv-completa" name="servicio" value="revision-completa">
+          <label for="serv-completa">Revisión completa</label>
+        </div>
+        <div class="opcion">
+          <input type="radio" id="serv-reparacion" name="servicio" value="reparacion">
+          <label for="serv-reparacion">Reparación</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Extras</legend>
+        <div class="opcion">
+          <input type="checkbox" id="lavado" name="extras" value="lavado">
+          <label for="lavado">Añadir lavado, 6 €</label>
+        </div>
+        <div class="opcion">
+          <input type="checkbox" id="recogida" name="extras" value="recogida">
+          <label for="recogida">Recogida a domicilio</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>La avería</legend>
+
+        <div class="campo">
+          <label for="averia">Describe la avería *</label>
+          <textarea id="averia" name="averia" rows="5" required minlength="20" maxlength="500"
+                    aria-describedby="ayuda-averia contador"></textarea>
+          <small id="ayuda-averia" class="ayuda">Entre 20 y 500 caracteres</small>
+          <small id="contador" class="contador" aria-live="polite">0 / 500 caracteres</small>
+        </div>
+
+        <div class="campo">
+          <label for="foto">Foto de la avería</label>
+          <input type="file" id="foto" name="foto" accept=".jpg,.jpeg,.png,image/jpeg,image/png" aria-describedby="ayuda-foto">
+          <small id="ayuda-foto" class="ayuda">Opcional, solo JPG o PNG</small>
+        </div>
+      </fieldset>
+
+      <div class="opcion">
+        <input type="checkbox" id="quiero-cuenta" name="quiero_cuenta" value="si">
+        <label for="quiero-cuenta">Quiero crear una cuenta</label>
+      </div>
+
+      <fieldset id="cuenta" disabled>
+        <legend>Tu cuenta para seguir la reparación</legend>
+
+        <div class="campo">
+          <label for="clave">Contraseña *</label>
+          <input type="password" id="clave" name="clave" required minlength="8"
+                 pattern="(?=.*[A-Za-z])(?=.*[0-9]).{8,}" autocomplete="new-password"
+                 title="Mínimo 8 caracteres con letras y números" aria-describedby="ayuda-clave">
+          <small id="ayuda-clave" class="ayuda">Mínimo 8 caracteres con letras y números</small>
+        </div>
+
+        <div class="campo">
+          <label for="clave2">Repite la contraseña *</label>
+          <input type="password" id="clave2" name="clave2" required autocomplete="new-password">
+        </div>
+      </fieldset>
+
+      <!-- Campo trampa para bots, oculto para las personas -->
+      <div class="trampa" aria-hidden="true">
+        <label for="web">No rellenes este campo</label>
+        <input type="text" id="web" name="web" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="opcion">
+        <input type="checkbox" id="privacidad" name="privacidad" value="acepto" required>
+        <label for="privacidad">He leído y acepto la política de privacidad *</label>
+      </div>
+
+      <button type="submit">Pedir cita</button>
+    </form>
+  </main>
+
+  <footer class="pie">
+    <p>BiciRuta · Taller de bicicletas · Torrejón de Ardoz</p>
+  </footer>
+
+</body>
+</html>

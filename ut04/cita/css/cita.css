@@ -1,0 +1,123 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #222;
+  background: #F6F8F6;
+}
+
+/* Cabecera con el buscador */
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #152A1D;
+  color: #F4EAD8;
+}
+
+.logo { display: block; }
+.logo img { display: block; height: 40px; width: auto; }
+
+.buscador { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.buscador label { font-size: 14px; }
+.buscador input { width: 220px; }
+
+/* Contenido */
+.contenido {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+h1 { color: #152A1D; margin: 16px 0 8px; }
+
+fieldset {
+  margin: 0 0 20px;
+  padding: 12px 16px 16px;
+  border: 1px solid #C9D3CC;
+  border-radius: 8px;
+  background: #FFFFFF;
+}
+
+fieldset:disabled { opacity: 0.6; }
+
+legend {
+  padding: 0 6px;
+  font-weight: bold;
+  color: #152A1D;
+}
+
+.campo { display: flex; flex-direction: column; margin-bottom: 14px; }
+.campo label { font-weight: 600; margin-bottom: 4px; }
+
+.opcion { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+
+input, select, textarea, button {
+  font: inherit;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"],
+input[type="number"], input[type="password"], input[type="search"], select, textarea {
+  padding: 8px 10px;
+  border: 2px solid #8A9A8E;
+  border-radius: 6px;
+  background: #FFFFFF;
+}
+
+input[type="radio"], input[type="checkbox"] { width: 18px; height: 18px; }
+
+.ayuda, .contador { font-size: 14px; color: #4A5A4E; margin-top: 4px; }
+.contador { align-self: flex-end; }
+
+button {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 6px;
+  background: #E6945A;
+  color: #152A1D;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover { background: #D9823F; }
+
+:focus-visible { outline: 3px solid #0B57D0; outline-offset: 2px; }
+.cabecera :focus-visible { outline-color: #FFD166; }
+
+/* Estados de validación solo después de que el usuario toque el campo */
+input:user-invalid, select:user-invalid, textarea:user-invalid {
+  border-color: #C62828;
+  background: #FDECEC;
+}
+
+input:user-valid, select:user-valid, textarea:user-valid {
+  border-color: #2E7D32;
+}
+
+/* Campo trampa fuera de la pantalla */
+.trampa {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.pie {
+  margin-top: 24px;
+  padding: 16px;
+  text-align: center;
+  background: #152A1D;
+  color: #D5E6D9;
+}
+
+/* Escritorio: dos columnas en los datos personales */
+@media (min-width: 700px) {
+  .buscador input { width: 280px; }
+}
