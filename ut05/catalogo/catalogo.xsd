@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- catalogo.xsd · Esquema del catálogo de BiciRuta S.L. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- ===== Tipos simples con nombre, reutilizables ===== -->
+
+  <!-- Referencia: BR- y cuatro dígitos -->
+  <xs:simpleType name="tipoRef">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="BR-[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Importe: decimal mayor que 0 y con 2 decimales como máximo -->
+  <xs:simpleType name="tipoImporte">
+    <xs:restriction base="xs:decimal">
+      <xs:minExclusive value="0"/>
+      <xs:fractionDigits value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoMoneda">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EUR"/>
+      <xs:enumeration value="USD"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoCategoria">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="bicicleta"/>
+      <xs:enumeration value="accesorio"/>
+      <xs:enumeration value="recambio"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoTalla">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="L"/>
+      <xs:enumeration value="XL"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Peso: decimal mayor que 0 -->
+  <xs:simpleType name="tipoPeso">
+    <xs:restriction base="xs:decimal">
+      <xs:minExclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ===== Tipos complejos ===== -->
+
+  <!-- Precio: contenido de tipo importe con el atributo moneda, EUR por defecto -->
+  <xs:complexType name="tipoPrecio">
+    <xs:simpleContent>
+      <xs:extension base="tipoImporte">
+        <xs:attribute name="moneda" type="tipoMoneda" default="EUR"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- Peso con el atributo unidad fijo en kg -->
+  <xs:complexType name="tipoPesoKg">
+    <xs:simpleContent>
+      <xs:extension base="tipoPeso">
+        <xs:attribute name="unidad" type="xs:string" fixed="kg"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="tipoCaracteristicas">
+    <xs:sequence>
+      <xs:element name="talla" type="tipoTalla" minOccurs="0"/>
+      <xs:element name="peso" type="tipoPesoKg" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Producto: orden fijo, descripción y características opcionales -->
+  <xs:complexType name="tipoProducto">
+    <xs:sequence>
+      <xs:element name="nombre" type="xs:string"/>
+      <xs:element name="precio" type="tipoPrecio"/>
+      <xs:element name="stock" type="xs:nonNegativeInteger"/>
+      <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+      <xs:element name="caracteristicas" type="tipoCaracteristicas" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="ref" type="tipoRef" use="required"/>
+    <xs:attribute name="categoria" type="tipoCategoria" use="required"/>
+    <xs:attribute name="proveedor" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <!-- ===== Elemento raíz ===== -->
+  <xs:element name="catalogo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="producto" type="tipoProducto" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="tienda" type="xs:string" use="required"/>
+      <xs:attribute name="actualizado" type="xs:date" use="required"/>
+    </xs:complexType>
+
+    <!-- ref no se puede repetir entre productos -->
+    <xs:unique name="refUnica">
+      <xs:selector xpath="producto"/>
+      <xs:field xpath="@ref"/>
+    </xs:unique>
+  </xs:element>
+
+</xs:schema>

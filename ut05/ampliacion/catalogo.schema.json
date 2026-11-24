@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Catálogo de BiciRuta",
+  "type": "object",
+  "required": ["tienda", "actualizado", "productos"],
+  "properties": {
+    "tienda": { "type": "string" },
+    "actualizado": { "type": "string", "format": "date" },
+    "productos": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["ref", "categoria", "nombre", "precio", "stock"],
+        "additionalProperties": false,
+        "properties": {
+          "ref": { "type": "string", "pattern": "^BR-[0-9]{4}$" },
+          "categoria": { "enum": ["bicicleta", "accesorio", "recambio"] },
+          "proveedor": { "type": "string" },
+          "nombre": { "type": "string" },
+          "precio": { "type": "number", "exclusiveMinimum": 0 },
+          "moneda": { "enum": ["EUR", "USD"], "default": "EUR" },
+          "stock": { "type": "integer", "minimum": 0 },
+          "descripcion": { "type": "string" },
+          "caracteristicas": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "talla": { "enum": ["S", "M", "L", "XL"] },
+              "peso": { "type": "number", "exclusiveMinimum": 0 },
+              "unidadPeso": { "const": "kg" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

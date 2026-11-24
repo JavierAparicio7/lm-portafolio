@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pedido de BiciRuta a su proveedor. Mezcla dos vocabularios: el del catálogo de BiciRuta
+     y el del proveedor (Ciclos del Norte). Los dos usan <nombre> y <ref> con significados distintos. -->
+<pedido numero="P-2026-0147" fecha="2026-10-14">
+  <nombre>Ciclos del Norte S.A.</nombre>
+  <ref>PROV-0007</ref>
+  <linea>
+    <ref>BR-0101</ref>
+    <nombre>Bici Urbana U100</nombre>
+    <ref>CN-URB-100-NEG</ref>
+    <nombre>City U100 negro talla M</nombre>
+    <cantidad>4</cantidad>
+  </linea>
+</pedido>

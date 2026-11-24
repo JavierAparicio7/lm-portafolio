@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Inventario de los equipos de red del aula de 1.º ASIR · Prometeo By The Power -->
+<inventario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="inventario.xsd"
+            centro="Prometeo By The Power" aula="Aula 1 ASIR" revisado="2026-11-23">
+
+  <equipo id="EQ-01" tipo="router">
+    <marca>Cisco</marca>
+    <modelo>ISR 4321</modelo>
+    <red>
+      <ip>192.168.10.1</ip>
+      <mac>00:1A:2B:3C:4D:01</mac>
+    </red>
+    <ubicacion>Rack del aula, bandeja 1</ubicacion>
+    <fechaCompra>2023-09-04</fechaCompra>
+    <puertos>3</puertos>
+  </equipo>
+
+  <equipo id="EQ-02" tipo="switch">
+    <marca>Cisco</marca>
+    <modelo>Catalyst 2960-X 24 puertos</modelo>
+    <red>
+      <ip>192.168.10.2</ip>
+      <mac>00:1A:2B:3C:4D:02</mac>
+    </red>
+    <ubicacion>Rack del aula, bandeja 2</ubicacion>
+    <fechaCompra>2023-09-04</fechaCompra>
+    <puertos>24</puertos>
+  </equipo>
+
+  <equipo id="EQ-03" tipo="punto-acceso">
+    <marca>Ubiquiti</marca>
+    <modelo>UniFi U6 Lite</modelo>
+    <red>
+      <ip>192.168.10.3</ip>
+      <mac>74:83:C2:10:20:03</mac>
+    </red>
+    <ubicacion>Techo, centro del aula</ubicacion>
+    <fechaCompra>2024-02-15</fechaCompra>
+  </equipo>
+
+  <equipo id="EQ-04" tipo="servidor">
+    <marca>Dell</marca>
+    <modelo>PowerEdge T150</modelo>
+    <red>
+      <ip>192.168.10.10</ip>
+      <mac>B0:7B:25:11:22:04</mac>
+    </red>
+    <ubicacion>Armario junto al rack</ubicacion>
+    <fechaCompra>2024-09-10</fechaCompra>
+    <sistema>Ubuntu Server 24.04 LTS</sistema>
+  </equipo>
+
+  <equipo id="EQ-05" tipo="nas">
+    <marca>Synology</marca>
+    <modelo>DS224+</modelo>
+    <red>
+      <ip>192.168.10.20</ip>
+      <mac>00:11:32:AA:BB:05</mac>
+    </red>
+    <ubicacion>Armario junto al rack</ubicacion>
+    <fechaCompra>2025-01-20</fechaCompra>
+    <sistema>DSM 7.2</sistema>
+  </equipo>
+
+  <equipo id="EQ-06" tipo="cortafuegos">
+    <marca>Netgate</marca>
+    <modelo>pfSense 2100</modelo>
+    <red>
+      <ip>192.168.10.254</ip>
+      <mac>90:EC:77:01:02:06</mac>
+    </red>
+    <ubicacion>Rack del aula, bandeja 3</ubicacion>
+    <fechaCompra>2025-03-03</fechaCompra>
+    <puertos>5</puertos>
+  </equipo>
+
+</inventario>

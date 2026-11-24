@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Catálogo de BiciRuta exportado a mano. ¡Tiene errores! -->
+<catalogo tienda="BiciRuta S.L." actualizado=2026-10-01>
+  <producto ref="BR-0101" categoria="bicicleta">
+    <nombre>Bici Urbana U100</nombre>
+    <precio moneda="EUR">389.00</precio>
+    <stock>12</stock>
+    <descripcion>Cuadro de aluminio & cesta delantera</descripcion>
+  </producto>
+  <producto ref="BR-0102" categoria="bicicleta">
+    <nombre>Bici Montaña M300</Nombre>
+    <precio moneda="EUR">649.00</precio>
+    <stock>5</stock>
+    <descripcion>Horquilla de suspensión <b>100 mm</descripcion></b>
+  </producto>
+  <producto ref="BR-0201" categoria="accesorio">
+    <nombre>Casco Urban M</nombre>
+    <precio moneda="EUR">39.90</precio>
+    <stock>30
+    <descripcion>Talla M (54-58 cm). Para cabezas < 58 cm</descripcion>
+  </producto>
+  <2producto ref="BR-0202" categoria="accesorio">
+    <nombre>Candado U Pro</nombre>
+    <precio moneda="EUR" moneda="USD">29.95</precio>
+    <stock>18</stock>
+  </2producto>
+</catalogo>
+<catalogo>
+  <producto ref="BR-0301" categoria="recambio"><nombre>Cámara 700x35</nombre></producto>
+</catalogo>

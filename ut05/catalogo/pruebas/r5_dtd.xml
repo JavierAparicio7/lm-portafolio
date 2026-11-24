@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalogo SYSTEM "catalogo.dtd">
+<!-- Catálogo de BiciRuta S.L. para el marketplace y los proveedores -->
+<catalogo tienda="BiciRuta S.L." actualizado="2026-10-01">
+
+  <producto ref="BR-0101" categoria="bicicleta" proveedor="Ciclos del Norte S.A.">
+    <nombre>Bici Urbana U100</nombre>
+    <precio moneda="EUR">389.00</precio>
+    <stock>12</stock>
+    <descripcion>Cuadro de aluminio y cesta delantera</descripcion>
+    <caracteristicas>
+      <talla>M</talla>
+      <peso unidad="kg">14.5</peso>
+    </caracteristicas>
+  </producto>
+
+  <producto ref="BR-0102" categoria="bicicleta" proveedor="Ciclos del Norte S.A.">
+    <nombre>Bici Montaña M300</nombre>
+    <precio moneda="EUR">649.00</precio>
+    <stock>5</stock>
+    <descripcion>Horquilla de suspensión de 100 mm</descripcion>
+    <caracteristicas>
+      <talla>L</talla>
+      <peso unidad="kg">13.2</peso>
+    </caracteristicas>
+  </producto>
+
+  <producto ref="BR-0103" categoria="bicicleta" proveedor="Accesorios Ruta S.L.">
+    <nombre>E-Bike City E500</nombre>
+    <precio moneda="EUR">1490.00</precio>
+    <stock>3</stock>
+    <descripcion>Motor de 250 W y 70 km de autonomía</descripcion>
+    <caracteristicas>
+      <talla>M</talla>
+      <peso unidad="kg">22.8</peso>
+    </caracteristicas>
+  </producto>
+
+  <producto ref="BR-0201" categoria="accesorio" proveedor="Accesorios Ruta S.L.">
+    <nombre>Casco Urban M</nombre>
+    <precio moneda="EUR">39.90</precio>
+    <stock>30</stock>
+    <!-- La descripción lleva < y &, con CDATA el analizador no los interpreta como marcado -->
+    <descripcion><![CDATA[Talla M (54-58 cm) & cierre regulable, para cabezas < 58 cm]]></descripcion>
+    <caracteristicas>
+      <talla>M</talla>
+    </caracteristicas>
+  </producto>
+
+  <producto ref="X-2" categoria="accesorio" proveedor="Accesorios Ruta S.L.">
+    <nombre>Candado U Pro</nombre>
+    <precio moneda="EUR">29.95</precio>
+    <stock>18</stock>
+  </producto>
+
+  <producto ref="BR-0301" categoria="recambio" proveedor="Ciclos del Norte S.A.">
+    <nombre>Cámara 700x35</nombre>
+    <precio moneda="EUR">6.50</precio>
+    <stock>80</stock>
+    <descripcion>Válvula Presta</descripcion>
+  </producto>
+
+</catalogo>

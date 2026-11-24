@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pedido de BiciRuta a su proveedor con dos espacios de nombres:
+     br = vocabulario de pedidos de BiciRuta
+     cn = vocabulario del catálogo de Ciclos del Norte -->
+<br:pedido xmlns:br="https://biciruta.example/xml/pedidos"
+           xmlns:cn="https://ciclosdelnorte.example/xml/catalogo"
+           numero="P-2026-0147" fecha="2026-10-14">
+  <!-- Datos del proveedor tal como los guarda BiciRuta -->
+  <br:nombre>Ciclos del Norte S.A.</br:nombre>
+  <br:ref>PROV-0007</br:ref>
+  <br:linea>
+    <!-- Referencia y nombre del producto en el catálogo de BiciRuta -->
+    <br:ref>BR-0101</br:ref>
+    <br:nombre>Bici Urbana U100</br:nombre>
+    <!-- Referencia y nombre del mismo producto en el catálogo del proveedor -->
+    <cn:proveedor>
+      <cn:ref>CN-URB-100-NEG</cn:ref>
+      <cn:nombre>City U100 negro talla M</cn:nombre>
+    </cn:proveedor>
+    <br:cantidad>4</br:cantidad>
+  </br:linea>
+</br:pedido>
